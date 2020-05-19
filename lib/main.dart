@@ -1,8 +1,7 @@
-import 'dart:collection';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/compent/base_page.dart';
+import 'package:flutterdemo/router/flexlayout.dart';
 import 'package:flutterdemo/router/layout_ink_and_card.dart';
 import 'package:flutterdemo/router/listview_top_view.dart';
 import 'package:flutterdemo/router/page_view.dart';
@@ -39,6 +38,10 @@ class MainApp extends StatelessWidget {
     routersMap[InkAndCardLayoutRouter.routerName] = (context) {
       return InkAndCardLayoutRouter();
     };
+
+    routersMap[LayoutRouter.routerName] = (context){
+      return LayoutRouter();
+    };
     return routersMap;
   }
 }
@@ -70,6 +73,9 @@ class MainSate extends State {
 
     titleList.add(Title("InkAndCard", new Icon(Icons.card_giftcard),
         InkAndCardLayoutRouter.routerName));
+
+    titleList.add(
+        Title("LayoutSample", new Icon(Icons.layers), LayoutRouter.routerName));
   }
 
   @override
