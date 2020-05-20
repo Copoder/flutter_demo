@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/compent/base_page.dart';
@@ -6,6 +7,7 @@ import 'package:flutterdemo/router/layout_ink_and_card.dart';
 import 'package:flutterdemo/router/listview_top_view.dart';
 import 'package:flutterdemo/router/page_view.dart';
 import 'package:flutterdemo/router/refresh_list_view.dart';
+import 'package:flutterdemo/router/test_net_request.dart';
 
 void main() {
   runApp(MainApp());
@@ -42,6 +44,10 @@ class MainApp extends StatelessWidget {
     routersMap[LayoutRouter.routerName] = (context){
       return LayoutRouter();
     };
+
+    routersMap[TestNetRequestRouter.routerName] = (context){
+      return TestNetRequestRouter();
+    };
     return routersMap;
   }
 }
@@ -76,6 +82,8 @@ class MainSate extends State {
 
     titleList.add(
         Title("LayoutSample", new Icon(Icons.layers), LayoutRouter.routerName));
+
+    titleList.add(Title("TestNetRequest",Icon(Icons.network_wifi),TestNetRequestRouter.routerName));    
   }
 
   @override
