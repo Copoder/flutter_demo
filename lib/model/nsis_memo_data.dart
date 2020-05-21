@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'nsis_memo_data.g.dart';
+
+@JsonSerializable()
 class MemoInfo {
   String content;
   String endDate;
@@ -12,4 +17,10 @@ class MemoInfo {
   String typeColor;
   bool showPortal;
   String fontSize;
+
+  MemoInfo() {}
+
+  factory MemoInfo.fromJson(Map<String, dynamic> json) {
+    return _$MemoInfoFromJson(json);
+  }
 }

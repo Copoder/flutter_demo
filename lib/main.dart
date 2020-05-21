@@ -1,10 +1,12 @@
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/compent/base_page.dart';
 import 'package:flutterdemo/router/flexlayout.dart';
 import 'package:flutterdemo/router/layout_ink_and_card.dart';
 import 'package:flutterdemo/router/listview_top_view.dart';
+import 'package:flutterdemo/router/memo_router.dart';
 import 'package:flutterdemo/router/page_view.dart';
 import 'package:flutterdemo/router/refresh_list_view.dart';
 import 'package:flutterdemo/router/test_net_request.dart';
@@ -48,6 +50,10 @@ class MainApp extends StatelessWidget {
     routersMap[TestNetRequestRouter.routerName] = (context){
       return TestNetRequestRouter();
     };
+
+    routersMap[MemoRouter.routerName] = (context){
+      return MemoRouter();
+    };
     return routersMap;
   }
 }
@@ -83,7 +89,10 @@ class MainSate extends State {
     titleList.add(
         Title("LayoutSample", new Icon(Icons.layers), LayoutRouter.routerName));
 
-    titleList.add(Title("TestNetRequest",Icon(Icons.network_wifi),TestNetRequestRouter.routerName));    
+    titleList.add(Title("TestNetRequest",Icon(Icons.network_wifi),TestNetRequestRouter.routerName));
+
+    titleList.add(Title("NsisMemo",Icon(Icons.memory),MemoRouter.routerName));
+
   }
 
   @override
