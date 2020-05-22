@@ -44,9 +44,15 @@ class MeMoState extends BaseView<MemoRouter, MemoPresenter> {
         child: CircularProgressIndicator(),
       );
     } else {
-      return ListView.builder(itemBuilder: (context, index) {
-        return Text(data[index].content);
-      });
+      return ListView.builder(
+        itemBuilder: (context, index) {
+          return Container(
+            alignment: Alignment.center,
+            child: Text(data[index].content),
+          );
+        },
+        itemCount: data.length,
+      );
     }
   }
 

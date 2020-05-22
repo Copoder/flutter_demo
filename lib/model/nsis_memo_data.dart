@@ -9,14 +9,14 @@ class MemoInfo {
   String createDate;
   bool deleted;
   String deptCode;
-  String id;
+  int id;
   String modifyDate;
   String operatorId;
   String startDate;
   String type;
   String typeColor;
   bool showPortal;
-  String fontSize;
+  int fontSize;
 
   MemoInfo() {}
 

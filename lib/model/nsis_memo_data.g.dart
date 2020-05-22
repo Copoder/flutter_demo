@@ -13,14 +13,14 @@ MemoInfo _$MemoInfoFromJson(Map<String, dynamic> json) {
     ..createDate = json['createDate'] as String
     ..deleted = json['deleted'] as bool
     ..deptCode = json['deptCode'] as String
-    ..id = json['id'] as String
+    ..id = json['id'] as int
     ..modifyDate = json['modifyDate'] as String
     ..operatorId = json['operatorId'] as String
     ..startDate = json['startDate'] as String
     ..type = json['type'] as String
     ..typeColor = json['typeColor'] as String
     ..showPortal = json['showPortal'] as bool
-    ..fontSize = json['fontSize'] as String;
+    ..fontSize = json['fontSize'] as int;
 }
 
 Map<String, dynamic> _$MemoInfoToJson(MemoInfo instance) => <String, dynamic>{

@@ -2,11 +2,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 
 @JsonSerializable()
-class Result<T> {
+class Result {
   int code;
   bool success;
   String message;
 
 //  int timestamp;
-  T data;
+  var data;
 }

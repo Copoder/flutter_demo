@@ -6,12 +6,16 @@ import 'package:flutterdemo/model/nsis_result.dart';
 
 class MemoPresenter extends BasePresenter {
   Future<List<MemoInfo>> getMemoData() async {
-    List<MemoInfo> info;
-    Response<Result<List<MemoInfo>>> resp = await DioClient.getInstance()
+    Response resp = await DioClient.getInstance()
         .setNsisOption()
         .dio
         .get("nsis/memorandum");
-    print("nsis-data" + resp.data.toString());
-    return resp.data.data;
+    List<MemoInfo> infos = [];
+    List jsonMemoData =  resp.data["data"];
+    jsonMemoData.forEach((item){
+      infos.add(MemoInfo.fromJson(item));
+    });
+    print("nsis-data" + resp.data["data"].toString());
+    return infos;
   }
 }
