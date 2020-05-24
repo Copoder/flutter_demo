@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutterdemo/base/view.dart';
-import 'package:flutterdemo/compent/base_page.dart';
 import 'package:flutterdemo/model/nsis_memo_data.dart';
 import 'package:flutterdemo/presenter/memo_presenter.dart';
 
 class MemoRouter extends StatefulWidget {
+  static String routerName = "memo_router";
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -13,21 +17,43 @@ class MemoRouter extends StatefulWidget {
 }
 
 class MeMoState extends BaseView<MemoRouter, MemoPresenter> {
-  List<MemoInfo> data;
+  List<MemoInfo> data = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    data = mPresenter.getMemoData();
+    mPresenter.getMemoData().then((data) {
+      if (data != null) {
+        this.data = data;
+        setState(() {});
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return BasePage(ListView.builder(itemBuilder: (context, inidex) {
-      return Text(data[inidex].content);
-    }));
+    return Scaffold(
+      body: getCurrentWidget(),
+    );
+  }
+
+  Widget getCurrentWidget() {
+    if (data == null || data.length == 0) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return ListView.builder(
+        itemBuilder: (context, index) {
+          return Container(
+            alignment: Alignment.center,
+            child: Text(data[index].content),
+          );
+        },
+        itemCount: data.length,
+      );
+    }
   }
 
   @override
